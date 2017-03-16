@@ -1,0 +1,8 @@
+{
+  "templates": {
+    "simple": {
+      "branch": "master",
+      "git": "https://github.com/fireyy/ginta-simple.git"
+    }
+  }
+}

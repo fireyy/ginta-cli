@@ -1,0 +1,39 @@
+{
+  "name": "ginta-cli",
+  "version": "0.0.1",
+  "description": "A simple resume builder CLI.",
+  "main": "./bin/ginta.js",
+  "engines": {
+    "node": ">=7.6.0",
+    "npm": ">=3.0.0"
+  },
+  "scripts": {
+    "ginta": "node ./bin/ginta.js"
+  },
+  "bin": {
+    "ginta": "./bin/ginta.js"
+  },
+  "repository": {
+    "url": "https://github.com/fireyy/ginta-cli.git",
+    "type": "git"
+  },
+  "keywords": [
+    "resume",
+    "builder",
+    "ginta",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/fireyy/ginta-cli/issues"
+  },
+  "homepage": "https://github.com/fireyy/ginta-cli#readme",
+  "author": "fireyy <fireyy@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "child_process": "^1.0.2",
+    "commander": "^2.9.0",
+    "inquirer": "^3.0.6",
+    "semver": "^5.3.0"
+  }
+}
