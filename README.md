@@ -1,4 +1,4 @@
-# ginta-cli
+# ginta-cli (WIP)
 
 A simple resume builder CLI.
 
