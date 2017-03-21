@@ -19,6 +19,12 @@ commander
     .action(require('./init'));
 
 commander
+    .command('build')
+    .description('Build resume from json data')
+    .alias('b')
+    .action(require('./build'));
+
+commander
     .command('list')
     .description('List the configuration file')
     .alias('l')
