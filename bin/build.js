@@ -24,7 +24,9 @@ module.exports = (options) => {
                 process.exit();
             })
         } else {
-            html2pdf.create(resume, { format: 'A4' }).toFile('./resume.pdf', (error, res) => {
+            console.log('file://' + path.resolve('.'));
+            // process.exit();
+            html2pdf.create(resume, { format: 'A4', base: 'file://' + path.resolve('.') }).toFile('./resume.pdf', (error, res) => {
                 if (error) {
                     console.log(chalk.red(error));
                     process.exit();
