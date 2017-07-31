@@ -19,6 +19,13 @@ commander
     .action(require('./init'));
 
 commander
+    .command('build')
+    .description('Build resume from json data')
+    .alias('b')
+    .option("-t, --type [type]", "Which file type to export", /^(html|pdf)$/i, "html")
+    .action(require('./build'));
+
+commander
     .command('list')
     .description('List the configuration file')
     .alias('l')
