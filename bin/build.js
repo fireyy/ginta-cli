@@ -4,7 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const ejs = require('ejs');
-const html2pdf = require('html-pdf');
+const convertFactory = require('electron-html-to');
+
+const conversion = convertFactory({
+  converterPath: convertFactory.converters.PDF,
+  allowLocalFilesAccess: true
+});
 
 module.exports = (options) => {
     let type = options.type || 'html';
@@ -24,16 +29,21 @@ module.exports = (options) => {
                 process.exit();
             })
         } else {
-            console.log('file://' + path.resolve('.'));
             // process.exit();
-            html2pdf.create(resume, { format: 'A4', base: 'file://' + path.resolve('.') }).toFile('./resume.pdf', (error, res) => {
-                if (error) {
-                    console.log(chalk.red(error));
-                    process.exit();
-                }
-                console.log(chalk.green(`\n Resume file ${res.filename} build Success.\n`));
-                process.exit();
+            resume = resume.replace(/href="|src="/g, match => {
+                return match + 'file://' + path.resolve('.') + '/';
             });
+            conversion({ html: resume }, function(err, result) {
+                if (err) {
+                    return console.error(err);
+                }
+
+                console.log(result.numberOfPages);
+                console.log(result.logs);
+                result.stream.pipe(fs.createWriteStream('./resume.pdf'));
+                conversion.kill();
+            });
+            
         }
         
     });
